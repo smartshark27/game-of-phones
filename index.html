@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game of Phones</title>
+    <meta name="viewport" content="user-scalable=no" />
+    <script type="text/javascript" src="src/main.js"></script>
+    <script type="text/javascript" src="src/puzzles/phones2puzzle1.js"></script>
+    <script
+      type="text/javascript"
+      src="src/screens/instructionsScreen.js"
+    ></script>
+    <script type="text/javascript" src="src/screens/introScreen.js"></script>
+    <script type="text/javascript" src="src/screens/menuScreen.js"></script>
+    <script
+      type="text/javascript"
+      src="src/screens/selectNumberOfPhonesScreen.js"
+    ></script>
+    <script type="text/javascript" src="src/screens/puzzleScreen.js"></script>
+    <script
+      type="text/javascript"
+      src="src/screens/selectPieceScreen.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="src/screens/selectPuzzleScreen.js"
+    ></script>
+    <script type="text/javascript" src="src/util.js"></script>
+  </head>
+
+  <body>
+    <svg
+      id="canvas"
+      style="touch-action: manipulation; position: absolute; left: 0; top: 0; font-family: 'Lucida Console', Monaco, monospace;"
+      onload="handleLoad()"
+      onclick="handleCanvasClick()"
+    ></svg>
+  </body>
+</html>
