@@ -1,7 +1,66 @@
-const WIDTH = 2500;
-const HEIGHT = 2000;
-const BALL_RADIUS = 50;
-const BALL_SPEED = 5;
+// class Phones2Puzzle1 {
+//   static draw(piece) {
+//     xOffset = piece === "1" ? 0 : WIDTH - window.innerWidth;
+//     yOffset = (HEIGHT - window.innerHeight) / 2;
+  
+//     drawRect("background", -xOffset, -yOffset, WIDTH, HEIGHT, "LightBlue");
+//     drawBall(xOffset);
+//   }
+  
+//   static drawBall(xOffset) {
+//     const circleX = -xOffset + BALL_RADIUS;
+//     const circleY = window.innerHeight / 2;
+//     drawCircle("ball", circleX, circleY, BALL_RADIUS, "Black");
+//   }
+  
+//   static animate() {
+//     const ball = getElement("ball");
+//     var velocityX = BALL_SPEED;
+//     var velocityY = BALL_SPEED;
+//     while (puzzleRunning) {
+//       await sleep(1000 / FPS);
+//       [velocityX, velocityY] = updateVelocity(ball, velocityX, velocityY);
+//       move(ball, velocityX, velocityY);
+//     }
+//   }
+  
+//   static updateVelocity(ball, velocityX, velocityY) {
+//     const ballBoundary = getCircleBoundary(ball);
+//     const background = getElement("background");
+//     const backgroudBoundary = getRectBoundary(background);
+  
+//     if (ballBoundary.left <= backgroudBoundary.left) {
+//       velocityX = BALL_SPEED;
+//     } else if (ballBoundary.right >= backgroudBoundary.right) {
+//       velocityX = -BALL_SPEED;
+//     }
+  
+//     if (ballBoundary.top <= backgroudBoundary.top) {
+//       velocityY = BALL_SPEED;
+//     } else if (ballBoundary.bottom >= backgroudBoundary.bottom) {
+//       velocityY = -BALL_SPEED;
+//     }
+  
+//     return [velocityX, velocityY];
+//   }
+  
+//   static move(ball, velocityX, velocityY) {
+//     const x = Number(ball.getAttribute("cx"));
+//     const y = Number(ball.getAttribute("cy"));
+//     ball.setAttribute("cx", x + velocityX);
+//     ball.setAttribute("cy", y + velocityY);
+//   }
+  
+//   static remove() {
+//     removeElement("background");
+//     removeElement("ball");
+//   }
+// }
+
+const WIDTH = 2000;
+const HEIGHT = 1500;
+const BALL_RADIUS = 100;
+const BALL_SPEED = 20;
 
 function drawPhones2Puzzle1(piece) {
   xOffset = piece === "1" ? 0 : WIDTH - window.innerWidth;
