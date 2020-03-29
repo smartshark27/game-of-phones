@@ -1,58 +1,41 @@
 const FPS = 60;
 
+var currentScreen;
+
 function handleLoad() {
   fitToScreen("canvas");
-  drawIntroScreen();
+  currentScreen = new IntroScreen();
 }
 
 function handleCanvasClick() {
-  if (introScreenShowing) {
-    switchScreen("intro", "instructions");
-  } else if (instructionsScreenShowing) {
-    switchScreen("instructions", "menu");
-  } else if (puzzleScreenShowing) {
-    handlePuzzleScreenClick();
+  if (currentScreen instanceof IntroScreen) {
+    switchScreenTo("instructions");
+  } else if (currentScreen instanceof InstructionsScreen) {
+    switchScreenTo("menu");
+  } else if (currentScreen instanceof PuzzleScreen) {
+    PuzzleScreen.handleClick();
   }
 }
 
-async function switchScreen(from, to, props) {
-  if (from === "intro") {
-    removeIntroScreen();
-  } else if (from === "instructions") {
-    removeInstructionsScreen();
-  } else if (from === "menu") {
-    removeMenuScreen();
-  } else if (from === "selectNumberOfPhones") {
-    removeSelectNumberOfPhonesScreen();
-  } else if (from === "selectPuzzle") {
-    removeSelectPuzzleScreen();
-  } else if (from === "selectPiece") {
-    removeSelectPieceScreen();
-  } else if (from === "puzzle") {
-    removePuzzleScreen();
-  } else {
-    console.log(`Could not clear screen ${from}`);
-  }
+async function switchScreenTo(screenName, props) {
+  currentScreen.remove();
   await sleep(100);
-  if (to === "intro") {
-    drawIntroScreen();
-  } else if (to === "instructions") {
-    drawInstructionsScreen();
-  } else if (to === "menu") {
-    drawMenuScreen();
-  } else if (to === "selectNumberOfPhones") {
-    drawSelectNumberOfPhonesScreen();
-  } else if (to === "selectPuzzle") {
-    drawSelectPuzzleScreen(props);
-  } else if (to === "selectPiece") {
-    drawSelectPieceScreen(props);
-  } else if (to === "puzzle") {
-    drawPuzzleScreen(props);
-  }  else {
-    console.log(`Could not draw screen ${to}`);
-  }
-}
 
-function redrawScreen(current, props) {
-  switchScreen(current, current, props);
+  if (screenName === "intro") {
+    currentScreen = new IntroScreen();
+  } else if (screenName === "instructions") {
+    currentScreen = new InstructionsScreen();
+  } else if (screenName === "menu") {
+    currentScreen = new MenuScreen();
+  } else if (screenName === "selectNumberOfPhones") {
+    currentScreen = new SelectNumberOfPhonesScreen();
+  } else if (screenName === "selectPuzzle") {
+    currentScreen = new SelectPuzzleScreen(props);
+  } else if (screenName === "selectPiece") {
+    currentScreen = new SelectPieceScreen(props);
+  } else if (screenName === "puzzle") {
+    currentScreen = new PuzzleScreen(props);
+  } else {
+    console.log(`Could not switch to screen ${screenName} because it is not an option`);
+  }
 }

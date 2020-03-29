@@ -1,47 +1,53 @@
-function drawMenuScreen() {
-  drawText("menuScreenTitle", "50%", "35%", "Game of Phones", 64);
-  drawMenuPlay();
-  drawMenuInstructions();
-}
+class MenuScreen {
+  constructor() {
+    this.draw();
+  }
 
-function drawMenuPlay() {
-  const text = drawTextWithBackground(
-    "menuPlayText",
-    "50%",
-    "50%",
-    "Play",
-    48,
-    "menuPlayBackground",
-    "LightGreen"
-  );
-  text.setAttribute("onclick", "handleMenuPlayClick()");
-}
+  draw() {
+    drawText("title", "50%", "35%", "Game of Phones", 64);
+    this._drawPlay();
+    this._drawInstructions();
+  }
 
-function handleMenuPlayClick() {
-  switchScreen("menu", "selectNumberOfPhones");
-}
+  remove() {
+    removeElement("title");
+    removeElement("playBackground");
+    removeElement("playText");
+    removeElement("instructionsBackground");
+    removeElement("instructionsText");
+  }
 
-function drawMenuInstructions() {
-  const text = drawTextWithBackground(
-    "menuInstructionsText",
-    "50%",
-    "65%",
-    "Instructions",
-    48,
-    "menuInstructionsBackground",
-    "LightBlue"
-  );
-  text.setAttribute("onclick", "handleMenuInstructionsClick()");
-}
+  static handlePlayClick() {
+    switchScreenTo("selectNumberOfPhones");
+  }
 
-function handleMenuInstructionsClick() {
-  switchScreen("menu", "instructions");
-}
+  static handleInstructionsClick() {
+    switchScreenTo("instructions");
+  }
 
-function removeMenuScreen() {
-  removeElement("menuScreenTitle");
-  removeElement("menuPlayBackground");
-  removeElement("menuPlayText");
-  removeElement("menuInstructionsBackground");
-  removeElement("menuInstructionsText");
+  _drawPlay() {
+    const text = drawTextWithBackground(
+      "playText",
+      "50%",
+      "50%",
+      "Play",
+      48,
+      "playBackground",
+      "LightGreen"
+    );
+    text.setAttribute("onclick", "MenuScreen.handlePlayClick()");
+  }
+
+  _drawInstructions() {
+    const text = drawTextWithBackground(
+      "instructionsText",
+      "50%",
+      "65%",
+      "Instructions",
+      48,
+      "instructionsBackground",
+      "LightBlue"
+    );
+    text.setAttribute("onclick", "MenuScreen.handleInstructionsClick()");
+  }
 }

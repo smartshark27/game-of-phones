@@ -131,3 +131,7 @@ function getCircleBoundary(circle) {
     bottom: y + radius
   };
 }
+
+function print(text) {
+  console.log(text);
+}

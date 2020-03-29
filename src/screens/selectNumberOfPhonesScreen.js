@@ -1,33 +1,42 @@
-function drawSelectNumberOfPhonesScreen() {
-  drawText("title", "50%", "40%", "Select Number of Phones", 64);
+class SelectNumberOfPhonesScreen {
+  constructor() {
+    this.draw();
+  }
 
-  const twoText = drawTextWithBackground(
-    "twoText",
-    "35%",
-    "60%",
-    "2",
-    48,
-    "twoBackground",
-    "LightGreen"
-  );
-  twoText.setAttribute("numberOfPhones", "2");
-  twoText.setAttribute("onclick", "handleSelectNumberOfPhonesClick(event)");
-}
+  draw() {
+    drawText("title", "50%", "40%", "Select Number of Phones", 64);
 
-function handleSelectNumberOfPhonesClick(event) {
-  const clickedElement = event.target;
-  const props = {
-    numberOfPhones: clickedElement.getAttribute("numberOfPhones")
-  };
-  switchScreen("selectNumberOfPhones", "selectPuzzle", props);
-}
+    const twoText = drawTextWithBackground(
+      "twoText",
+      "35%",
+      "60%",
+      "2",
+      48,
+      "twoBackground",
+      "LightGreen"
+    );
+    twoText.setAttribute("numberOfPhones", "2");
+    twoText.setAttribute(
+      "onclick",
+      "SelectNumberOfPhonesScreen.handleClick(event)"
+    );
+  }
 
-function removeSelectNumberOfPhonesScreen() {
-  removeElement("title");
-  removeElement("twoText");
-  removeElement("twoBackground");
-  removeElement("threeText");
-  removeElement("threeBackground");
-  removeElement("fourText");
-  removeElement("fourBackground");
+  remove() {
+    removeElement("title");
+    removeElement("twoText");
+    removeElement("twoBackground");
+    removeElement("threeText");
+    removeElement("threeBackground");
+    removeElement("fourText");
+    removeElement("fourBackground");
+  }
+
+  static handleClick(event) {
+    const clickedElement = event.target;
+    const props = {
+      numberOfPhones: clickedElement.getAttribute("numberOfPhones")
+    };
+    switchScreenTo("selectPuzzle", props);
+  }
 }

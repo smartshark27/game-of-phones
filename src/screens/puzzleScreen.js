@@ -1,36 +1,51 @@
-var puzzleScreenShowing = false;
-var puzzleRunning = false;
+class PuzzleScreen {
+  static puzzle = null;
+  static isAnimating = false;
 
-function drawPuzzleScreen(props) {
-  const numberOfPhones = props.numberOfPhones;
-  const puzzle = props.puzzle;
-  const piece = props.piece;
+  constructor(props) {
+    const numberOfPhones = props.numberOfPhones;
+    const puzzleID = props.puzzle;
 
-  const puzzleName = "phones" + numberOfPhones + "puzzle" + puzzle;
+    this.piece = props.piece;
+    this.isAnimating = false;
+    this.puzzleName = "phones" + numberOfPhones + "puzzle" + puzzleID;
 
-  if (puzzleName === "phones2puzzle1") {
-    drawPhones2Puzzle1(piece);
+    this.draw();
   }
-  
-  puzzleScreenShowing = true;
-}
 
-function handlePuzzleScreenClick() {
-  if (!puzzleRunning) {
-    puzzleRunning = true;
-    animatePhones2Puzzle1();
-  } else {
-    puzzleRunning = false;
-    const props = {
-      numberOfPhones: "2",
-      puzzle: "1",
-      piece: "1"
-    };
-    redrawScreen("puzzle", props);
+  draw() {
+    this._drawPuzzle();
   }
-}
 
-function removePuzzleScreen() {
-  removePhones2Puzzle1();
-  puzzleScreenShowing = false;
+  async redrawPuzzle() {
+    currentScreen.puzzle.remove();
+    currentScreen.draw();
+  }
+
+  remove() {
+    this.puzzle.remove();
+  }
+
+  static handleClick() {
+    if (!currentScreen instanceof PuzzleScreen) {
+      throw "Current screen is not an instance of PuzzleScreen";
+    }
+
+    if (!currentScreen.isAnimating) {
+      currentScreen.isAnimating = true;
+      currentScreen.puzzle.animate();
+    } else {
+      currentScreen.isAnimating = false;
+      currentScreen.puzzle.remove();
+      currentScreen.redrawPuzzle();
+    }
+  }
+
+  _drawPuzzle() {
+    if (this.puzzleName === "phones2puzzle1") {
+      this.puzzle = new Phones2Puzzle1(this.piece);
+    } else {
+      throw `Puzzle name ${this.puzzleName} is not valid`;
+    }
+  }
 }

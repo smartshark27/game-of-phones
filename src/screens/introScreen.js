@@ -1,13 +1,15 @@
-var introScreenShowing = false;
+class IntroScreen {
+  constructor() {
+    this.draw();
+  }
 
-function drawIntroScreen() {
-  drawText("introScreenTitle", "50%", "40%", "Game of Phones", 96);
-  drawText("introScreenMessage", "50%", "60%", "Touch to proceed", 48);
-  introScreenShowing = true;
-}
+  draw() {
+    drawText("introScreenTitle", "50%", "40%", "Game of Phones", 96);
+    drawText("introScreenMessage", "50%", "60%", "Touch to proceed", 48);
+  }
 
-function removeIntroScreen() {
-  removeElement("introScreenTitle");
-  removeElement("introScreenMessage");
-  introScreenShowing = false;
+  remove() {
+    removeElement("introScreenTitle");
+    removeElement("introScreenMessage");
+  }
 }
