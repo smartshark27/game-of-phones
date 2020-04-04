@@ -1,35 +1,16 @@
 class SelectNumberOfPhonesScreen {
   constructor() {
+    this.elements = [];
     this.draw();
   }
 
   draw() {
-    drawText("title", "50%", "40%", "Select Number of Phones", 64);
-
-    const twoText = drawTextWithBackground(
-      "twoText",
-      "35%",
-      "60%",
-      "2",
-      48,
-      "twoBackground",
-      "LightGreen"
-    );
-    twoText.setAttribute("numberOfPhones", "2");
-    twoText.setAttribute(
-      "onclick",
-      "SelectNumberOfPhonesScreen.handleClick(event)"
-    );
+    this._drawTitle();
+    this._drawTextButton("35%", "2");
   }
 
   remove() {
-    removeElement("title");
-    removeElement("twoText");
-    removeElement("twoBackground");
-    removeElement("threeText");
-    removeElement("threeBackground");
-    removeElement("fourText");
-    removeElement("fourBackground");
+    this.elements.forEach(element => element.remove());
   }
 
   static handleClick(event) {
@@ -38,5 +19,49 @@ class SelectNumberOfPhonesScreen {
       numberOfPhones: clickedElement.getAttribute("numberOfPhones")
     };
     switchScreenTo("selectPuzzle", props);
+  }
+
+  _drawTitle() {
+    this.elements.push(
+      SVG.new("text")
+        .setAttribute("dominant-baseline", "middle")
+        .setAttribute("text-anchor", "middle")
+        .setAttribute("x", "50%")
+        .setAttribute("y", "40%")
+        .setAttribute("font-size", 64)
+        .setTextContent("Select Number of Phones")
+    );
+  }
+
+  _drawTextButton(x, text) {
+    const tempText = SVG.new("text")
+      .setAttribute("dominant-baseline", "middle")
+      .setAttribute("text-anchor", "middle")
+      .setAttribute("x", x)
+      .setAttribute("y", "60%")
+      .setAttribute("font-size", 48)
+      .setTextContent(text);
+    const textBoundary = tempText.getBBox();
+    tempText.remove();
+
+    this.elements.push(
+      SVG.new("rect")
+        .setAttribute("x", textBoundary.x - 40)
+        .setAttribute("y", textBoundary.y - 20)
+        .setAttribute("width", textBoundary.width + 80)
+        .setAttribute("height", textBoundary.height + 40)
+        .setAttribute("fill", "LightGreen")
+    );
+    this.elements.push(
+      SVG.new("text")
+        .setAttribute("dominant-baseline", "middle")
+        .setAttribute("text-anchor", "middle")
+        .setAttribute("x", x)
+        .setAttribute("y", "60%")
+        .setAttribute("font-size", 48)
+        .setTextContent(text)
+        .setAttribute("onclick", "SelectNumberOfPhonesScreen.handleClick(event)")
+        .setAttribute("numberOfPhones", text)
+    );
   }
 }

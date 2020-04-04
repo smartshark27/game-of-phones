@@ -3,6 +3,7 @@ class PuzzleScreen {
   static isAnimating = false;
 
   constructor(props) {
+    this.elements = [];
     const numberOfPhones = props.numberOfPhones;
     const puzzleID = props.puzzle;
 

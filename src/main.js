@@ -3,7 +3,6 @@ const FPS = 60;
 var currentScreen;
 
 function handleLoad() {
-  fitToScreen("canvas");
   currentScreen = new IntroScreen();
 }
 

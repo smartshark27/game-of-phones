@@ -5,6 +5,7 @@ class Phones2Puzzle1 {
     this.BALL_RADIUS = 100;
     this.BALL_SPEED = 20;
 
+    this.elements = [];
     this.xOffset = piece === "1" ? 0 : this.WIDTH - window.innerWidth;
     this.yOffset = (this.HEIGHT - window.innerHeight) / 2;
 
@@ -12,19 +13,12 @@ class Phones2Puzzle1 {
   }
 
   draw() {
-    drawRect(
-      "background",
-      -this.xOffset,
-      -this.yOffset,
-      this.WIDTH,
-      this.HEIGHT,
-      "LightBlue"
-    );
+    this._drawBackground();
     this._drawBall();
   }
 
   async animate() {
-    const ball = getElement("ball");
+    const ball = SVG.get("ball");
     var velocityX = this.BALL_SPEED;
     var velocityY = this.BALL_SPEED;
     while (currentScreen.isAnimating) {
@@ -39,20 +33,36 @@ class Phones2Puzzle1 {
   }
 
   remove() {
-    removeElement("background");
-    removeElement("ball");
+    this.elements.forEach(element => element.remove());
+  }
+
+  _drawBackground() {
+    this.elements.push(
+      SVG.new("rect")
+        .setAttribute("id", "background")
+        .setAttribute("x", -this.xOffset)
+        .setAttribute("y", -this.yOffset)
+        .setAttribute("width", this.WIDTH)
+        .setAttribute("height", this.HEIGHT)
+        .setAttribute("fill", "LightBlue")
+    );
   }
 
   _drawBall() {
-    const circleX = -this.xOffset + this.BALL_RADIUS;
-    const circleY = window.innerHeight / 2;
-    drawCircle("ball", circleX, circleY, this.BALL_RADIUS, "Black");
+    this.elements.push(
+      SVG.new("circle")
+        .setAttribute("id", "ball")
+        .setAttribute("cx", -this.xOffset + this.BALL_RADIUS)
+        .setAttribute("cy", window.innerHeight / 2)
+        .setAttribute("r", this.BALL_RADIUS)
+        .setAttribute("fill", "Black")
+    );
   }
 
   _updateBallVelocity(ball, velocityX, velocityY) {
-    const ballBoundary = getCircleBoundary(ball);
-    const background = getElement("background");
-    const backgroundBoundary = getRectBoundary(background);
+    const ballBoundary = ball.getBoundary();
+    const background = SVG.get("background");
+    const backgroundBoundary = background.getBoundary();
 
     if (ballBoundary.left <= backgroundBoundary.left) {
       velocityX = this.BALL_SPEED;
@@ -72,7 +82,6 @@ class Phones2Puzzle1 {
   _moveBall(ball, velocityX, velocityY) {
     const x = Number(ball.getAttribute("cx"));
     const y = Number(ball.getAttribute("cy"));
-    ball.setAttribute("cx", x + velocityX);
-    ball.setAttribute("cy", y + velocityY);
+    ball.setAttribute("cx", x + velocityX).setAttribute("cy", y + velocityY);
   }
 }

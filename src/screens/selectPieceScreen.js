@@ -1,49 +1,20 @@
 class SelectPieceScreen {
   constructor(props) {
-    this.puzzle = props.puzzle;
+    this.elements = [];
     this.numberOfPhones = props.numberOfPhones;
+    this.puzzle = props.puzzle;
 
     this.draw();
   }
 
   draw() {
-    drawText("title", "50%", "40%", "Select Piece", 64);
-  
-    const piece1Text = drawTextWithBackground(
-      "piece1Text",
-      "35%",
-      "60%",
-      "1",
-      48,
-      "piece1Background",
-      "LightGreen"
-    );
-    piece1Text.setAttribute("numberOfPhones", this.numberOfPhones);
-    piece1Text.setAttribute("puzzle", this.puzzle);
-    piece1Text.setAttribute("piece", "1");
-    piece1Text.setAttribute("onclick", "SelectPieceScreen.handleClick(event)");
-  
-    const piece2Text = drawTextWithBackground(
-      "piece2Text",
-      "50%",
-      "60%",
-      "2",
-      48,
-      "piece2Background",
-      "LightGreen"
-    );
-    piece2Text.setAttribute("numberOfPhones", this.numberOfPhones);
-    piece2Text.setAttribute("puzzle", this.puzzle);
-    piece2Text.setAttribute("piece", "2");
-    piece2Text.setAttribute("onclick", "SelectPieceScreen.handleClick(event)");
+    this._drawTitle();
+    this._drawTextButton("35%", "1");
+    this._drawTextButton("50%", "2");
   }
 
   remove() {
-    removeElement("title");
-    removeElement("piece1Background");
-    removeElement("piece1Text");
-    removeElement("piece2Background");
-    removeElement("piece2Text");
+    this.elements.forEach(element => element.remove());
   }
 
   static handleClick(event) {
@@ -54,5 +25,51 @@ class SelectPieceScreen {
       piece: clickedElement.getAttribute("piece")
     };
     switchScreenTo("puzzle", props);
+  }
+
+  _drawTitle() {
+    this.elements.push(
+      SVG.new("text")
+        .setAttribute("dominant-baseline", "middle")
+        .setAttribute("text-anchor", "middle")
+        .setAttribute("x", "50%")
+        .setAttribute("y", "40%")
+        .setAttribute("font-size", 64)
+        .setTextContent("Select Piece")
+    );
+  }
+
+  _drawTextButton(x, text) {
+    const tempText = SVG.new("text")
+      .setAttribute("dominant-baseline", "middle")
+      .setAttribute("text-anchor", "middle")
+      .setAttribute("x", x)
+      .setAttribute("y", "60%")
+      .setAttribute("font-size", 48)
+      .setTextContent(text);
+    const textBoundary = tempText.getBBox();
+    tempText.remove();
+
+    this.elements.push(
+      SVG.new("rect")
+        .setAttribute("x", textBoundary.x - 40)
+        .setAttribute("y", textBoundary.y - 20)
+        .setAttribute("width", textBoundary.width + 80)
+        .setAttribute("height", textBoundary.height + 40)
+        .setAttribute("fill", "LightGreen")
+    );
+    this.elements.push(
+      SVG.new("text")
+        .setAttribute("dominant-baseline", "middle")
+        .setAttribute("text-anchor", "middle")
+        .setAttribute("x", x)
+        .setAttribute("y", "60%")
+        .setAttribute("font-size", 48)
+        .setTextContent(text)
+        .setAttribute("onclick", "SelectPieceScreen.handleClick(event)")
+        .setAttribute("numberOfPhones", this.numberOfPhones)
+        .setAttribute("puzzle", this.puzzle)
+        .setAttribute("piece", text)
+    );
   }
 }
