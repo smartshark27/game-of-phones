@@ -1,14 +1,14 @@
 class SelectPuzzleScreen {
   constructor(props) {
     this.elements = [];
-    this.numberOfPhones = props.numberOfPhones;
+    this.phones = props.phones;
 
     this.draw();
   }
 
   draw() {
     this._drawTitle();
-    this._drawTextButton("35%", "1");
+    this._drawButtons();
   }
 
   remove() {
@@ -17,10 +17,7 @@ class SelectPuzzleScreen {
   
   static handleClick(event) {
     const clickedElement = event.target;
-    const props = {
-      numberOfPhones: clickedElement.getAttribute("numberOfPhones"),
-      puzzle: clickedElement.getAttribute("puzzle"),
-    }
+    const props = JSON.parse(clickedElement.getAttribute("props"));
     switchScreenTo("selectPiece", props);
   }
 
@@ -36,16 +33,33 @@ class SelectPuzzleScreen {
     );
   }
 
-  _drawTextButton(x, text) {
+  _drawButtons() {
+    const puzzles = PUZZLE_LOOKUP[this.phones];
+    const numberOfButtons = Object.keys(puzzles).length;
+    const xPositions = generatePositionsBetween(numberOfButtons, 30, 70);
+    var xIndex = 0;
+    for (var puzzle in puzzles) {
+      const x = xPositions[xIndex];
+      this._drawButton(x, puzzle);
+      xIndex++;
+    }
+  }
+
+  _drawButton(x, puzzle) {
     const tempText = SVG.new("text")
       .setAttribute("dominant-baseline", "middle")
       .setAttribute("text-anchor", "middle")
       .setAttribute("x", x)
       .setAttribute("y", "60%")
       .setAttribute("font-size", 48)
-      .setTextContent(text);
+      .setTextContent(puzzle);
     const textBoundary = tempText.getBBox();
     tempText.remove();
+
+    const props = JSON.stringify({
+      phones: this.phones,
+      puzzle: puzzle
+    });
 
     this.elements.push(
       SVG.new("rect")
@@ -55,8 +69,7 @@ class SelectPuzzleScreen {
         .setAttribute("height", textBoundary.height + 40)
         .setAttribute("fill", "LightGreen")
         .setAttribute("onclick", "SelectPuzzleScreen.handleClick(event)")
-        .setAttribute("numberOfPhones", this.numberOfPhones)
-        .setAttribute("puzzle", text)
+        .setAttribute("props", props)
     );
     this.elements.push(
       SVG.new("text")
@@ -65,10 +78,9 @@ class SelectPuzzleScreen {
         .setAttribute("x", x)
         .setAttribute("y", "60%")
         .setAttribute("font-size", 48)
-        .setTextContent(text)
+        .setTextContent(puzzle)
         .setAttribute("onclick", "SelectPuzzleScreen.handleClick(event)")
-        .setAttribute("numberOfPhones", this.numberOfPhones)
-        .setAttribute("puzzle", text)
+        .setAttribute("props", props)
     );
   }
 }

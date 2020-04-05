@@ -1,48 +1,59 @@
-class SelectNumberOfPhonesScreen {
+class SelectPhonesScreen {
   constructor() {
     this.elements = [];
     this.draw();
   }
 
   draw() {
-    this._drawTitle();
-    this._drawTextButton("35%", "2");
+    const numberOfYPositions = Object.keys(PUZZLE_LOOKUP).length + 1;
+    const yPositions = generatePositionsBetween(numberOfYPositions, 30, 70);
+    this._drawTitle(yPositions[0]);
+    this._drawButtons(yPositions.slice(1));
   }
 
   remove() {
     this.elements.forEach(element => element.remove());
   }
 
-  static handleClick(event) {
+  static handleButtonClick(event) {
     const clickedElement = event.target;
-    const props = {
-      numberOfPhones: clickedElement.getAttribute("numberOfPhones")
-    };
+    const props = JSON.parse(clickedElement.getAttribute("props"));
     switchScreenTo("selectPuzzle", props);
   }
 
-  _drawTitle() {
+  _drawTitle(y) {
     this.elements.push(
       SVG.new("text")
         .setAttribute("dominant-baseline", "middle")
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
-        .setAttribute("y", "40%")
+        .setAttribute("y", y)
         .setAttribute("font-size", 64)
-        .setTextContent("Select Number of Phones")
+        .setTextContent("How many phones?")
     );
   }
 
-  _drawTextButton(x, text) {
+  _drawButtons(yPositions) {
+    var yIndex = 0;
+    for (var phones in PUZZLE_LOOKUP) {
+      const y = yPositions[yIndex];
+      this._drawButton(y, phones);
+      yIndex++;
+    }
+  }
+
+  _drawButton(y, phones) {
     const tempText = SVG.new("text")
       .setAttribute("dominant-baseline", "middle")
       .setAttribute("text-anchor", "middle")
-      .setAttribute("x", x)
-      .setAttribute("y", "60%")
+      .setAttribute("x", window.innerWidth / 2)
+      .setAttribute("y", y)
       .setAttribute("font-size", 48)
-      .setTextContent(text);
+      .setTextContent(phones + " Phones");
     const textBoundary = tempText.getBBox();
     tempText.remove();
+
+    const props = JSON.stringify({ phones: phones });
 
     this.elements.push(
       SVG.new("rect")
@@ -51,19 +62,19 @@ class SelectNumberOfPhonesScreen {
         .setAttribute("width", textBoundary.width + 80)
         .setAttribute("height", textBoundary.height + 40)
         .setAttribute("fill", "LightGreen")
-        .setAttribute("onclick", "SelectNumberOfPhonesScreen.handleClick(event)")
-        .setAttribute("numberOfPhones", text)
+        .setAttribute("onclick", "SelectPhonesScreen.handleButtonClick(event)")
+        .setAttribute("props", props)
     );
     this.elements.push(
       SVG.new("text")
         .setAttribute("dominant-baseline", "middle")
         .setAttribute("text-anchor", "middle")
-        .setAttribute("x", x)
-        .setAttribute("y", "60%")
+        .setAttribute("x", window.innerWidth / 2)
+        .setAttribute("y", y)
         .setAttribute("font-size", 48)
-        .setTextContent(text)
-        .setAttribute("onclick", "SelectNumberOfPhonesScreen.handleClick(event)")
-        .setAttribute("numberOfPhones", text)
+        .setTextContent(phones + " Phones")
+        .setAttribute("onclick", "SelectPhonesScreen.handleButtonClick(event)")
+        .setAttribute("props", props)
     );
   }
 }

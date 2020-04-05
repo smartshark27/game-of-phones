@@ -26,8 +26,8 @@ async function switchScreenTo(screenName, props) {
     currentScreen = new InstructionsScreen();
   } else if (screenName === "menu") {
     currentScreen = new MenuScreen();
-  } else if (screenName === "selectNumberOfPhones") {
-    currentScreen = new SelectNumberOfPhonesScreen();
+  } else if (screenName === "selectPhones") {
+    currentScreen = new SelectPhonesScreen();
   } else if (screenName === "selectPuzzle") {
     currentScreen = new SelectPuzzleScreen(props);
   } else if (screenName === "selectPiece") {

@@ -9,3 +9,12 @@ function clearArray(arr) {
 function print(...text) {
   console.log(...text);
 }
+
+function generatePositionsBetween(number, from = 0, to = 100) {
+  const separation = (to - from) / (number - 1);
+  const positions = [];
+  for (var i = from; i <= to; i += separation) {
+    positions.push(Math.floor(i).toString() + "%");
+  }
+  return positions;
+}

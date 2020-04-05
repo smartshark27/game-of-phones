@@ -4,18 +4,18 @@ class PuzzleScreen {
 
   constructor(props) {
     this.elements = [];
-    const numberOfPhones = props.numberOfPhones;
-    const puzzleID = props.puzzle;
+    const phones = props.phones;
+    const puzzle = props.puzzle;
+    const piece = props.piece;
 
-    this.piece = props.piece;
+    this._drawPuzzle = PUZZLE_LOOKUP[phones][puzzle][piece];
     this.isAnimating = false;
-    this.puzzleName = "phones" + numberOfPhones + "puzzle" + puzzleID;
 
     this.draw();
   }
 
   draw() {
-    this._drawPuzzle();
+    this.puzzle = this._drawPuzzle();
   }
 
   async redrawPuzzle() {
@@ -39,14 +39,6 @@ class PuzzleScreen {
       currentScreen.isAnimating = false;
       currentScreen.puzzle.remove();
       currentScreen.redrawPuzzle();
-    }
-  }
-
-  _drawPuzzle() {
-    if (this.puzzleName === "phones2puzzle1") {
-      this.puzzle = new Phones2Puzzle1(this.piece);
-    } else {
-      throw `Puzzle name ${this.puzzleName} is not valid`;
     }
   }
 }
