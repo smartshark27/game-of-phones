@@ -70,6 +70,7 @@ class MenuScreen {
         .setAttribute("width", textBoundary.width + 80)
         .setAttribute("height", textBoundary.height + 40)
         .setAttribute("fill", color)
+        .setAttribute("onclick", clickHandler)
     );
     this.elements.push(
       SVG.new("text")

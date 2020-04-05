@@ -54,6 +54,9 @@ class SelectPuzzleScreen {
         .setAttribute("width", textBoundary.width + 80)
         .setAttribute("height", textBoundary.height + 40)
         .setAttribute("fill", "LightGreen")
+        .setAttribute("onclick", "SelectPuzzleScreen.handleClick(event)")
+        .setAttribute("numberOfPhones", this.numberOfPhones)
+        .setAttribute("puzzle", text)
     );
     this.elements.push(
       SVG.new("text")

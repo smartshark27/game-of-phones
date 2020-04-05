@@ -51,6 +51,8 @@ class SelectNumberOfPhonesScreen {
         .setAttribute("width", textBoundary.width + 80)
         .setAttribute("height", textBoundary.height + 40)
         .setAttribute("fill", "LightGreen")
+        .setAttribute("onclick", "SelectNumberOfPhonesScreen.handleClick(event)")
+        .setAttribute("numberOfPhones", text)
     );
     this.elements.push(
       SVG.new("text")
