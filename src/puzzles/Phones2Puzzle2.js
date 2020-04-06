@@ -12,14 +12,18 @@ class Phones2Puzzle2 {
     this._drawText();
   }
 
-  async animate() {
+  startAnimation() {
     this._showText();
     var degrees = 0;
-    while (currentScreen.isAnimating) {
+    
+    this.interval = setInterval(() => {
       this._rotateText(degrees);
       degrees = (degrees + 1) % 360;
-      await sleep(FRAME_DELAY);
-    }
+    }, FRAME_DELAY);
+  }
+
+  stopAnimation() {
+    clearInterval(this.interval);
   }
 
   remove() {

@@ -24,19 +24,23 @@ class Phones3Puzzle1 {
     this._drawBall();
   }
 
-  async animate() {
+  startAnimation() {
     const ball = SVG.get("ball");
     var velocityX = this.BALL_SPEED;
     var velocityY = this.BALL_SPEED;
-    while (currentScreen.isAnimating) {
-      await sleep(FRAME_DELAY);
+
+    this.interval = setInterval(() => {
       [velocityX, velocityY] = this._updateBallVelocity(
         ball,
         velocityX,
         velocityY
       );
       this._moveBall(ball, velocityX, velocityY);
-    }
+    }, FRAME_DELAY);
+  }
+
+  stopAnimation() {
+    clearInterval(this.interval);
   }
 
   remove() {

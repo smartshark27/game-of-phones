@@ -8,7 +8,6 @@ class Phones2Puzzle1 {
     this.elements = [];
     this.xOffset = piece === "1" ? 0 : this.WIDTH - window.innerWidth;
     this.yOffset = (this.HEIGHT - window.innerHeight) / 2;
-    this.interval = null;
 
     this.draw();
   }
@@ -22,7 +21,7 @@ class Phones2Puzzle1 {
     const ball = SVG.get("ball");
     var velocityX = this.BALL_SPEED;
     var velocityY = this.BALL_SPEED;
-    
+
     this.interval = setInterval(() => {
       [velocityX, velocityY] = this._updateBallVelocity(
         ball,
