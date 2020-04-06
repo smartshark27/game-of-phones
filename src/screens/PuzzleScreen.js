@@ -4,11 +4,11 @@ class PuzzleScreen {
 
   constructor(props) {
     this.elements = [];
-    const phones = props.phones;
-    const puzzle = props.puzzle;
-    const piece = props.piece;
+    this._phones = props.phones;
+    this._puzzle = props.puzzle;
+    this._piece = props.piece;
 
-    this._drawPuzzle = PUZZLE_LOOKUP[phones][puzzle][piece];
+    this._drawPuzzle = PUZZLE_LOOKUP[this._phones][this._puzzle][this._piece];
     this.isAnimating = false;
 
     this.draw();
@@ -16,6 +16,50 @@ class PuzzleScreen {
 
   draw() {
     this.puzzle = this._drawPuzzle();
+    this._drawOverlay();
+  }
+
+  _drawOverlay() {
+    this.elements.push(
+      SVG.new("text")
+        .setAttribute("dominant-baseline", "middle")
+        .setAttribute("text-anchor", "middle")
+        .setAttribute("x", "50%")
+        .setAttribute("y", "20%")
+        .setAttribute("font-size", 36)
+        .setTextContent("Phones: " + this._phones + ", Puzzle: " + this._puzzle)
+    );
+    this.elements.push(
+      SVG.new("text")
+        .setAttribute("dominant-baseline", "middle")
+        .setAttribute("text-anchor", "middle")
+        .setAttribute("x", "50%")
+        .setAttribute("y", "30%")
+        .setAttribute("font-size", 48)
+        .setTextContent("This is piece " + this._piece)
+    );
+    this.elements.push(
+      SVG.new("text")
+        .setAttribute("dominant-baseline", "middle")
+        .setAttribute("text-anchor", "middle")
+        .setAttribute("x", "50%")
+        .setAttribute("y", "75%")
+        .setAttribute("font-size", 36)
+        .setTextContent("Touch to start animation at the")
+    );
+    this.elements.push(
+      SVG.new("text")
+        .setAttribute("dominant-baseline", "middle")
+        .setAttribute("text-anchor", "middle")
+        .setAttribute("x", "50%")
+        .setAttribute("y", "80%")
+        .setAttribute("font-size", 36)
+        .setTextContent("same time as everyone else")
+    );
+  }
+
+  removeOverlay() {
+    this.elements.forEach(element => element.remove());
   }
 
   async redrawPuzzle() {
@@ -25,6 +69,7 @@ class PuzzleScreen {
 
   remove() {
     this.puzzle.remove();
+    this.elements.forEach(element => element.remove());
   }
 
   static handleClick() {
@@ -33,6 +78,7 @@ class PuzzleScreen {
     }
 
     if (!currentScreen.isAnimating) {
+      currentScreen.removeOverlay();
       currentScreen.isAnimating = true;
       currentScreen.puzzle.startAnimation();
     } else {
