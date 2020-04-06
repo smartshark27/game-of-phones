@@ -34,9 +34,10 @@ class PuzzleScreen {
 
     if (!currentScreen.isAnimating) {
       currentScreen.isAnimating = true;
-      currentScreen.puzzle.animate();
+      currentScreen.puzzle.startAnimation();
     } else {
       currentScreen.isAnimating = false;
+      currentScreen.puzzle.stopAnimation();
       currentScreen.puzzle.remove();
       currentScreen.redrawPuzzle();
     }

@@ -1,4 +1,5 @@
 const FPS = 60;
+const FRAME_DELAY = Math.floor(1000 / FPS);
 
 var currentScreen;
 

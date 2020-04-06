@@ -29,7 +29,7 @@ class Phones3Puzzle1 {
     var velocityX = this.BALL_SPEED;
     var velocityY = this.BALL_SPEED;
     while (currentScreen.isAnimating) {
-      await sleep(1000 / FPS);
+      await sleep(FRAME_DELAY);
       [velocityX, velocityY] = this._updateBallVelocity(
         ball,
         velocityX,

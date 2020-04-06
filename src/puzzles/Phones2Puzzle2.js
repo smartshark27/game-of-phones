@@ -18,7 +18,7 @@ class Phones2Puzzle2 {
     while (currentScreen.isAnimating) {
       this._rotateText(degrees);
       degrees = (degrees + 1) % 360;
-      await sleep(1000 / FPS);
+      await sleep(FRAME_DELAY);
     }
   }
 
