@@ -29,7 +29,8 @@ class MenuScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "35%")
-        .setAttribute("font-size", 64)
+        .setAttribute("style", FONT_STYLE_TITLE)
+        .setAttribute("font-size", FONT_SIZE_TITLE)
         .setTextContent("Game of Phones")
     );
   }
@@ -58,7 +59,8 @@ class MenuScreen {
       .setAttribute("text-anchor", "middle")
       .setAttribute("x", "50%")
       .setAttribute("y", y)
-      .setAttribute("font-size", 48)
+      .setAttribute("style", FONT_STYLE_BODY)
+      .setAttribute("font-size", FONT_SIZE_BODY)
       .setTextContent(text);
     const textBoundary = tempText.getBBox();
     tempText.remove();
@@ -78,7 +80,8 @@ class MenuScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", y)
-        .setAttribute("font-size", 48)
+        .setAttribute("style", FONT_STYLE_BODY)
+        .setAttribute("font-size", FONT_SIZE_BODY)
         .setTextContent(text)
         .setAttribute("onclick", clickHandler)
     );

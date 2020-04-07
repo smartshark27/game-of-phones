@@ -29,7 +29,8 @@ class SelectPieceScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "40%")
-        .setAttribute("font-size", 64)
+        .setAttribute("style", FONT_STYLE_HEADING)
+        .setAttribute("font-size", FONT_SIZE_HEADING)
         .setTextContent("Select Piece")
     );
   }
@@ -52,7 +53,8 @@ class SelectPieceScreen {
       .setAttribute("text-anchor", "middle")
       .setAttribute("x", x)
       .setAttribute("y", "60%")
-      .setAttribute("font-size", 48)
+      .setAttribute("style", FONT_STYLE_BODY)
+      .setAttribute("font-size", FONT_SIZE_BODY)
       .setTextContent(piece);
     const textBoundary = tempText.getBBox();
     tempText.remove();
@@ -79,7 +81,8 @@ class SelectPieceScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", x)
         .setAttribute("y", "60%")
-        .setAttribute("font-size", 48)
+        .setAttribute("style", FONT_STYLE_BODY)
+        .setAttribute("font-size", FONT_SIZE_BODY)
         .setTextContent(piece)
         .setAttribute("onclick", "SelectPieceScreen.handleClick(event)")
         .setAttribute("props", props)

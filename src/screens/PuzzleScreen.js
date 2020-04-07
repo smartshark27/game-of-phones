@@ -26,7 +26,8 @@ class PuzzleScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "20%")
-        .setAttribute("font-size", 36)
+        .setAttribute("style", FONT_STYLE_BODY)
+        .setAttribute("font-size", FONT_SIZE_BODY)
         .setTextContent("Phones: " + this._phones + ", Puzzle: " + this._puzzle)
     );
     this.elements.push(
@@ -35,7 +36,8 @@ class PuzzleScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "30%")
-        .setAttribute("font-size", 48)
+        .setAttribute("style", FONT_STYLE_HEADING)
+        .setAttribute("font-size", FONT_SIZE_HEADING)
         .setTextContent("This is piece " + this._piece)
     );
     this.elements.push(
@@ -44,7 +46,8 @@ class PuzzleScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "75%")
-        .setAttribute("font-size", 36)
+        .setAttribute("style", FONT_STYLE_BODY)
+        .setAttribute("font-size", FONT_SIZE_BODY)
         .setTextContent("Touch to start animation at the")
     );
     this.elements.push(
@@ -53,7 +56,8 @@ class PuzzleScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "80%")
-        .setAttribute("font-size", 36)
+        .setAttribute("style", FONT_STYLE_BODY)
+        .setAttribute("font-size", FONT_SIZE_BODY)
         .setTextContent("same time as everyone else")
     );
   }

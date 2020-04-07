@@ -28,7 +28,8 @@ class SelectPhonesScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", y)
-        .setAttribute("font-size", 64)
+        .setAttribute("style", FONT_STYLE_HEADING)
+        .setAttribute("font-size", FONT_SIZE_HEADING)
         .setTextContent("How many phones?")
     );
   }
@@ -48,7 +49,8 @@ class SelectPhonesScreen {
       .setAttribute("text-anchor", "middle")
       .setAttribute("x", window.innerWidth / 2)
       .setAttribute("y", y)
-      .setAttribute("font-size", 48)
+      .setAttribute("style", FONT_STYLE_BODY)
+      .setAttribute("font-size", FONT_SIZE_BODY)
       .setTextContent(phones + " Phones");
     const textBoundary = tempText.getBBox();
     tempText.remove();
@@ -71,7 +73,8 @@ class SelectPhonesScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", window.innerWidth / 2)
         .setAttribute("y", y)
-        .setAttribute("font-size", 48)
+        .setAttribute("style", FONT_STYLE_BODY)
+        .setAttribute("font-size", FONT_SIZE_BODY)
         .setTextContent(phones + " Phones")
         .setAttribute("onclick", "SelectPhonesScreen.handleButtonClick(event)")
         .setAttribute("props", props)

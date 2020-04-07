@@ -20,7 +20,8 @@ class IntroScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "40%")
-        .setAttribute("font-size", 96)
+        .setAttribute("style", FONT_STYLE_TITLE)
+        .setAttribute("font-size", FONT_SIZE_TITLE)
         .setTextContent("Game of Phones")
     );
   }
@@ -32,7 +33,8 @@ class IntroScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "60%")
-        .setAttribute("font-size", 48)
+        .setAttribute("style", FONT_STYLE_BODY)
+        .setAttribute("font-size", FONT_SIZE_BODY)
         .setTextContent("Touch to proceed")
     );
   }

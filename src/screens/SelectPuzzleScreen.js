@@ -28,7 +28,8 @@ class SelectPuzzleScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "40%")
-        .setAttribute("font-size", 64)
+        .setAttribute("style", FONT_STYLE_HEADING)
+        .setAttribute("font-size", FONT_SIZE_HEADING)
         .setTextContent("Select Puzzle")
     );
   }
@@ -51,7 +52,8 @@ class SelectPuzzleScreen {
       .setAttribute("text-anchor", "middle")
       .setAttribute("x", x)
       .setAttribute("y", "60%")
-      .setAttribute("font-size", 48)
+      .setAttribute("style", FONT_STYLE_BODY)
+      .setAttribute("font-size", FONT_SIZE_BODY)
       .setTextContent(puzzle);
     const textBoundary = tempText.getBBox();
     tempText.remove();
@@ -77,7 +79,8 @@ class SelectPuzzleScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", x)
         .setAttribute("y", "60%")
-        .setAttribute("font-size", 48)
+        .setAttribute("style", FONT_STYLE_BODY)
+        .setAttribute("font-size", FONT_SIZE_BODY)
         .setTextContent(puzzle)
         .setAttribute("onclick", "SelectPuzzleScreen.handleClick(event)")
         .setAttribute("props", props)

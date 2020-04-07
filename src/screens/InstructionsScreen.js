@@ -26,7 +26,8 @@ class InstructionsScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "15%")
-        .setAttribute("font-size", 64)
+        .setAttribute("style", FONT_STYLE_HEADING)
+        .setAttribute("font-size", FONT_SIZE_HEADING)
         .setTextContent("Instructions")
     );
   }
@@ -38,7 +39,8 @@ class InstructionsScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", y)
-        .setAttribute("font-size", 36)
+        .setAttribute("style", FONT_STYLE_BODY)
+        .setAttribute("font-size", FONT_SIZE_BODY)
         .setTextContent(text)
     );
   }

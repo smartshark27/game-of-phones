@@ -18,7 +18,7 @@ class Phones2Puzzle2 {
     
     this.interval = setInterval(() => {
       this._rotateText(degrees);
-      degrees = (degrees + 1) % 360;
+      degrees = (degrees + 1) % 480;
     }, FRAME_DELAY);
   }
 
@@ -49,6 +49,7 @@ class Phones2Puzzle2 {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", this.textCentreX)
         .setAttribute("y", this.textCentreY)
+        .setAttribute("style", FONT_STYLE_TITLE)
         .setAttribute("font-size", 300)
     );
   }
