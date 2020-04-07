@@ -18,7 +18,7 @@ class Phones2Puzzle2 {
     
     this.interval = setInterval(() => {
       this._rotateText(degrees);
-      degrees = (degrees + 1) % 480;
+      degrees = (degrees + 1) % 360;
     }, FRAME_DELAY);
   }
 
