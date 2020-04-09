@@ -4,11 +4,15 @@ const FRAME_DELAY = Math.floor(1000 / FPS);
 const FONT_SIZE_TITLE = 96;
 const FONT_STYLE_TITLE = "font-family: 'Spartan', sans-serif; font-weight: 700";
 const FONT_SIZE_HEADING = 72;
-const FONT_STYLE_HEADING = "font-family: 'Spartan', sans-serif; font-weight: 700";
+const FONT_STYLE_HEADING =
+  "font-family: 'Spartan', sans-serif; font-weight: 700";
 const FONT_SIZE_BODY = 42;
 const FONT_STYLE_BODY = "font-family: 'Spartan', sans-serif; font-weight: 400";
 
 var currentScreen;
+var phonesNum;
+var puzzleNum;
+var pieceNum;
 
 function handleLoad() {
   currentScreen = new IntroScreen();
@@ -24,25 +28,13 @@ function handleCanvasClick() {
   }
 }
 
-async function switchScreenTo(screenName, props) {
+async function switchScreenTo(screenName) {
   currentScreen.remove();
   await sleep(100);
-
-  if (screenName === "intro") {
-    currentScreen = new IntroScreen();
-  } else if (screenName === "instructions") {
-    currentScreen = new InstructionsScreen();
-  } else if (screenName === "menu") {
-    currentScreen = new MenuScreen();
-  } else if (screenName === "selectPhones") {
-    currentScreen = new SelectPhonesScreen();
-  } else if (screenName === "selectPuzzle") {
-    currentScreen = new SelectPuzzleScreen(props);
-  } else if (screenName === "selectPiece") {
-    currentScreen = new SelectPieceScreen(props);
-  } else if (screenName === "puzzle") {
-    currentScreen = new PuzzleScreen(props);
-  } else {
-    console.log(`Could not switch to screen ${screenName} because it is not an option`);
+  try {
+    currentScreen = SCREEN_LOOKUP[screenName]();
+  } catch(error) {
+    print(error);
+    throw "Could not switch to screen: " + screenName;
   }
 }

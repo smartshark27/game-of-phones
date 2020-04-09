@@ -1,10 +1,11 @@
-class SelectPhonesScreen {
+class PhonesSelectScreen {
   constructor() {
     this.elements = [];
     this.draw();
   }
 
   draw() {
+    this._drawBackButton();
     const numberOfYPositions = Object.keys(PUZZLE_LOOKUP).length + 1;
     const yPositions = generatePositionsBetween(numberOfYPositions, 30, 70);
     this._drawTitle(yPositions[0]);
@@ -17,8 +18,12 @@ class SelectPhonesScreen {
 
   static handleButtonClick(event) {
     const clickedElement = event.target;
-    const props = JSON.parse(clickedElement.getAttribute("props"));
-    switchScreenTo("selectPuzzle", props);
+    phonesNum = clickedElement.getAttribute("phonesNum");
+    switchScreenTo("puzzleSelect");
+  }
+
+  _drawBackButton() {
+    this.elements.push(new BackButton());
   }
 
   _drawTitle(y) {
@@ -36,14 +41,14 @@ class SelectPhonesScreen {
 
   _drawButtons(yPositions) {
     var yIndex = 0;
-    for (var phones in PUZZLE_LOOKUP) {
+    for (var phonesNum in PUZZLE_LOOKUP) {
       const y = yPositions[yIndex];
-      this._drawButton(y, phones);
+      this._drawButton(y, phonesNum);
       yIndex++;
     }
   }
 
-  _drawButton(y, phones) {
+  _drawButton(y, phonesNum) {
     const tempText = SVG.new("text")
       .setAttribute("dominant-baseline", "middle")
       .setAttribute("text-anchor", "middle")
@@ -51,11 +56,9 @@ class SelectPhonesScreen {
       .setAttribute("y", y)
       .setAttribute("style", FONT_STYLE_BODY)
       .setAttribute("font-size", FONT_SIZE_BODY)
-      .setTextContent(phones + " Phones");
+      .setTextContent(phonesNum + " Phones");
     const textBoundary = tempText.getBBox();
     tempText.remove();
-
-    const props = JSON.stringify({ phones: phones });
 
     this.elements.push(
       SVG.new("rect")
@@ -64,8 +67,8 @@ class SelectPhonesScreen {
         .setAttribute("width", textBoundary.width + 80)
         .setAttribute("height", textBoundary.height + 40)
         .setAttribute("fill", "LightGreen")
-        .setAttribute("onclick", "SelectPhonesScreen.handleButtonClick(event)")
-        .setAttribute("props", props)
+        .setAttribute("onclick", "PhonesSelectScreen.handleButtonClick(event)")
+        .setAttribute("phonesNum", phonesNum)
     );
     this.elements.push(
       SVG.new("text")
@@ -75,9 +78,9 @@ class SelectPhonesScreen {
         .setAttribute("y", y)
         .setAttribute("style", FONT_STYLE_BODY)
         .setAttribute("font-size", FONT_SIZE_BODY)
-        .setTextContent(phones + " Phones")
-        .setAttribute("onclick", "SelectPhonesScreen.handleButtonClick(event)")
-        .setAttribute("props", props)
+        .setTextContent(phonesNum + " Phones")
+        .setAttribute("onclick", "PhonesSelectScreen.handleButtonClick(event)")
+        .setAttribute("phonesNum", phonesNum)
     );
   }
 }

@@ -1,13 +1,11 @@
-class SelectPieceScreen {
-  constructor(props) {
+class PieceSelectScreen {
+  constructor() {
     this.elements = [];
-    this.phones = props.phones;
-    this.puzzle = props.puzzle;
-
     this.draw();
   }
 
   draw() {
+    this._drawBackButton();
     this._drawTitle();
     this._drawButtons();
   }
@@ -18,8 +16,12 @@ class SelectPieceScreen {
 
   static handleClick(event) {
     const clickedElement = event.target;
-    const props = JSON.parse(clickedElement.getAttribute("props"));
-    switchScreenTo("puzzle", props);
+    pieceNum = clickedElement.getAttribute("pieceNum");
+    switchScreenTo("puzzle");
+  }
+
+  _drawBackButton() {
+    this.elements.push(new BackButton());
   }
 
   _drawTitle() {
@@ -36,18 +38,18 @@ class SelectPieceScreen {
   }
 
   _drawButtons() {
-    const pieces = PUZZLE_LOOKUP[this.phones][this.puzzle];
-    const numberOfButtons = Object.keys(pieces).length;
+    const pieceNums = PUZZLE_LOOKUP[phonesNum][puzzleNum];
+    const numberOfButtons = Object.keys(pieceNums).length;
     const xPositions = generatePositionsBetween(numberOfButtons, 30, 70);
     var xIndex = 0;
-    for (var piece in pieces) {
+    for (var pieceNum in pieceNums) {
       const x = xPositions[xIndex];
-      this._drawButton(x, piece);
+      this._drawButton(x, pieceNum);
       xIndex++;
     }
   }
 
-  _drawButton(x, piece) {
+  _drawButton(x, pieceNum) {
     const tempText = SVG.new("text")
       .setAttribute("dominant-baseline", "middle")
       .setAttribute("text-anchor", "middle")
@@ -55,15 +57,9 @@ class SelectPieceScreen {
       .setAttribute("y", "60%")
       .setAttribute("style", FONT_STYLE_BODY)
       .setAttribute("font-size", FONT_SIZE_BODY)
-      .setTextContent(piece);
+      .setTextContent(pieceNum);
     const textBoundary = tempText.getBBox();
     tempText.remove();
-
-    const props = JSON.stringify({
-      phones: this.phones,
-      puzzle: this.puzzle,
-      piece: piece
-    })
 
     this.elements.push(
       SVG.new("rect")
@@ -72,8 +68,8 @@ class SelectPieceScreen {
         .setAttribute("width", textBoundary.width + 80)
         .setAttribute("height", textBoundary.height + 40)
         .setAttribute("fill", "LightGreen")
-        .setAttribute("onclick", "SelectPieceScreen.handleClick(event)")
-        .setAttribute("props", props)
+        .setAttribute("onclick", "PieceSelectScreen.handleClick(event)")
+        .setAttribute("pieceNum", pieceNum)
     );
     this.elements.push(
       SVG.new("text")
@@ -83,9 +79,9 @@ class SelectPieceScreen {
         .setAttribute("y", "60%")
         .setAttribute("style", FONT_STYLE_BODY)
         .setAttribute("font-size", FONT_SIZE_BODY)
-        .setTextContent(piece)
-        .setAttribute("onclick", "SelectPieceScreen.handleClick(event)")
-        .setAttribute("props", props)
+        .setTextContent(pieceNum)
+        .setAttribute("onclick", "PieceSelectScreen.handleClick(event)")
+        .setAttribute("pieceNum", pieceNum)
     );
   }
 }

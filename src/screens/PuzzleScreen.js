@@ -2,13 +2,10 @@ class PuzzleScreen {
   static puzzle = null;
   static isAnimating = false;
 
-  constructor(props) {
+  constructor() {
     this.elements = [];
-    this._phones = props.phones;
-    this._puzzle = props.puzzle;
-    this._piece = props.piece;
 
-    this._drawPuzzle = PUZZLE_LOOKUP[this._phones][this._puzzle][this._piece];
+    this._drawPuzzle = PUZZLE_LOOKUP[phonesNum][puzzleNum][pieceNum];
     this.isAnimating = false;
 
     this.draw();
@@ -20,6 +17,15 @@ class PuzzleScreen {
   }
 
   _drawOverlay() {
+    this._drawBackButton();
+    this._drawText();
+  }
+
+  _drawBackButton() {
+    this.elements.push(new BackButton());
+  }
+
+  _drawText() {
     this.elements.push(
       SVG.new("text")
         .setAttribute("dominant-baseline", "middle")
@@ -28,7 +34,7 @@ class PuzzleScreen {
         .setAttribute("y", "20%")
         .setAttribute("style", FONT_STYLE_BODY)
         .setAttribute("font-size", FONT_SIZE_BODY)
-        .setTextContent("Phones: " + this._phones + ", Puzzle: " + this._puzzle)
+        .setTextContent("Phones: " + phonesNum + ", Puzzle: " + puzzleNum)
     );
     this.elements.push(
       SVG.new("text")
@@ -38,7 +44,7 @@ class PuzzleScreen {
         .setAttribute("y", "30%")
         .setAttribute("style", FONT_STYLE_HEADING)
         .setAttribute("font-size", FONT_SIZE_HEADING)
-        .setTextContent("This is piece " + this._piece)
+        .setTextContent("This is piece " + pieceNum)
     );
     this.elements.push(
       SVG.new("text")

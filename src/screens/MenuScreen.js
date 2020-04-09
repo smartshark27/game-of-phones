@@ -15,7 +15,7 @@ class MenuScreen {
   }
 
   static handlePlayClick() {
-    switchScreenTo("selectPhones");
+    switchScreenTo("phonesSelect");
   }
 
   static handleInstructionsClick() {

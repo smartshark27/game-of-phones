@@ -1,3 +1,13 @@
+const SCREEN_LOOKUP = {
+  intro: () => new IntroScreen(),
+  instructions: () => new InstructionsScreen(),
+  menu: () => new MenuScreen(),
+  phonesSelect: () => new PhonesSelectScreen(),
+  puzzleSelect: () => new PuzzleSelectScreen(),
+  pieceSelect: () => new PieceSelectScreen(),
+  puzzle: () => new PuzzleScreen()
+};
+
 // Number of phones:
 //  Puzzle number:
 //   Piece number:
