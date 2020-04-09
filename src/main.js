@@ -18,16 +18,6 @@ function handleLoad() {
   currentScreen = new IntroScreen();
 }
 
-function handleCanvasClick() {
-  if (currentScreen instanceof IntroScreen) {
-    switchScreenTo("instructions");
-  } else if (currentScreen instanceof InstructionsScreen) {
-    switchScreenTo("menu");
-  } else if (currentScreen instanceof PuzzleScreen) {
-    PuzzleScreen.handleClick();
-  }
-}
-
 async function switchScreenTo(screenName) {
   currentScreen.remove();
   await sleep(100);

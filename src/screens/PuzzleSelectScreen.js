@@ -22,7 +22,8 @@ class PuzzleSelectScreen {
   }
 
   _drawBackButton() {
-    this.elements.push(new BackButton());
+    const handleClick = "switchScreenTo(\"phonesSelect\")";
+    this.elements.push(new BackButton(handleClick));
   }
 
   _drawTitle() {

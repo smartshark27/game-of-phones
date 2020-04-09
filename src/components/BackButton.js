@@ -1,6 +1,7 @@
 class BackButton {
-  constructor() {
+  constructor(handleClick) {
     this.elements = [];
+    this.handleClick = handleClick;
     this.draw();
   }
 
@@ -17,6 +18,7 @@ class BackButton {
         .setAttribute("width", rectWidth)
         .setAttribute("height", rectHeight)
         .setAttribute("fill", "#ff9696")
+        .setAttribute("onclick", this.handleClick)
     );
 
     this.elements.push(
@@ -28,6 +30,7 @@ class BackButton {
         .setAttribute("style", FONT_STYLE_BODY)
         .setAttribute("font-size", FONT_SIZE_BODY)
         .setTextContent("Back")
+        .setAttribute("onclick", this.handleClick)
     );
   }
 

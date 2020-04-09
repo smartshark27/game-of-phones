@@ -23,7 +23,8 @@ class PhonesSelectScreen {
   }
 
   _drawBackButton() {
-    this.elements.push(new BackButton());
+    const handleClick = "switchScreenTo(\"menu\")";
+    this.elements.push(new BackButton(handleClick));
   }
 
   _drawTitle(y) {

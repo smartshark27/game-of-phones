@@ -21,7 +21,8 @@ class PieceSelectScreen {
   }
 
   _drawBackButton() {
-    this.elements.push(new BackButton());
+    const handleClick = "switchScreenTo(\"puzzleSelect\")";
+    this.elements.push(new BackButton(handleClick));
   }
 
   _drawTitle() {

@@ -6,13 +6,8 @@ class InstructionsScreen {
 
   draw() {
     this._drawTitle();
-    this._drawInstruction("25%", "1) Turn off device rotation.");
-    this._drawInstruction("35%", "2) Play with friends with phones.");
-    this._drawInstruction("45%", "3) All start the same level.");
-    this._drawInstruction("55%", "4) All choose a different piece.");
-    this._drawInstruction("65%", "5) Tap all screens at the same time.");
-    this._drawInstruction("75%", "6) Place phones on a surface correctly.");
-    this._drawInstruction("85%", "7) Move on to the next puzzle.");
+    this._drawInstructions();
+    this._drawScreenButton();
   }
 
   remove() {
@@ -32,6 +27,16 @@ class InstructionsScreen {
     );
   }
 
+  _drawInstructions() {
+    this._drawInstruction("25%", "1) Turn off device rotation.");
+    this._drawInstruction("35%", "2) Play with friends with phones.");
+    this._drawInstruction("45%", "3) All start the same level.");
+    this._drawInstruction("55%", "4) All choose a different piece.");
+    this._drawInstruction("65%", "5) Tap all screens at the same time.");
+    this._drawInstruction("75%", "6) Place phones on a surface correctly.");
+    this._drawInstruction("85%", "7) Move on to the next puzzle.");
+  }
+
   _drawInstruction(y, text) {
     this.elements.push(
       SVG.new("text")
@@ -43,5 +48,10 @@ class InstructionsScreen {
         .setAttribute("font-size", FONT_SIZE_BODY)
         .setTextContent(text)
     );
+  }
+
+  _drawScreenButton() {
+    const handleClick = "switchScreenTo(\"menu\")"
+    this.elements.push(new ScreenButton(handleClick));
   }
 }

@@ -7,6 +7,7 @@ class IntroScreen {
   draw() {
     this._drawTitle();
     this._drawMessage();
+    this._drawScreenButton();
   }
 
   remove() {
@@ -37,5 +38,10 @@ class IntroScreen {
         .setAttribute("font-size", FONT_SIZE_BODY)
         .setTextContent("Touch to proceed")
     );
+  }
+
+  _drawScreenButton() {
+    const handleClick = "switchScreenTo(\"instructions\")"
+    this.elements.push(new ScreenButton(handleClick));
   }
 }
