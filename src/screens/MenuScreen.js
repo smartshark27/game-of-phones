@@ -31,7 +31,7 @@ class MenuScreen {
         .setAttribute("y", "35%")
         .setAttribute("style", FONT_STYLE_TITLE)
         .setAttribute("font-size", FONT_SIZE_TITLE)
-        .setTextContent("Game of Phones")
+        .setTextContent("Phuzzle")
     );
   }
 

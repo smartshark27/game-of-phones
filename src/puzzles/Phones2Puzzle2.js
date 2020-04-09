@@ -55,7 +55,7 @@ class Phones2Puzzle2 {
   }
 
   _showText() {
-    SVG.get("text").setTextContent("Game of Phones!");
+    SVG.get("text").setTextContent("Phuzzle? Phuzzle!");
   }
 
   _rotateText(degrees) {

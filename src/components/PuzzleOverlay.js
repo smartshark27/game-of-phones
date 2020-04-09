@@ -33,7 +33,7 @@ class PuzzleOverlay {
         .setAttribute("y", "30%")
         .setAttribute("style", FONT_STYLE_HEADING)
         .setAttribute("font-size", FONT_SIZE_HEADING)
-        .setTextContent("This is piece " + pieceNum)
+        .setTextContent("This is Piece " + pieceNum)
     );
     this.elements.push(
       SVG.new("text")
