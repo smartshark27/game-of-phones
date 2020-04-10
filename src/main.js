@@ -28,3 +28,12 @@ async function switchScreenTo(screenName) {
     throw "Could not switch to screen: " + screenName;
   }
 }
+
+function setCanvasOnclick(handleClick) {
+  const canvas = document.getElementById("canvas");
+  canvas.setAttribute("onclick", handleClick);
+}
+
+function removeCanvasOnclick() {
+  document.getElementById("canvas").removeAttribute("onclick");
+}

@@ -5,13 +5,13 @@ class PuzzleOverlay {
   }
 
   draw() {
-    this._drawBackButton();
     this._drawText();
+    this._drawScreenButton();
+    this._drawBackButton();
   }
 
-  _drawBackButton() {
-    const handleClick = "switchScreenTo(\"pieceSelect\")";
-    this.elements.push(new BackButton(handleClick));
+  remove() {
+    this.elements.forEach(element => element.remove());
   }
 
   _drawText() {
@@ -57,7 +57,13 @@ class PuzzleOverlay {
     );
   }
 
-  remove() {
-    this.elements.forEach(element => element.remove());
+  _drawScreenButton() {
+    const handleClick = "PuzzleScreen.handleStoppedPuzzleClick()";
+    this.elements.push(new ScreenButton(handleClick));
+  }
+
+  _drawBackButton() {
+    const handleClick = "switchScreenTo(\"pieceSelect\")";
+    this.elements.push(new BackButton(handleClick));
   }
 }
