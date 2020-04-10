@@ -27,6 +27,11 @@ const PUZZLE_LOOKUP = {
       "1": () => new Phones3Puzzle1("1"),
       "2": () => new Phones3Puzzle1("2"),
       "3": () => new Phones3Puzzle1("3")
+    },
+    "2": {
+      "1": () => new Phones3Puzzle2("1"),
+      "2": () => new Phones3Puzzle2("2"),
+      "3": () => new Phones3Puzzle2("3")
     }
   }
 };
