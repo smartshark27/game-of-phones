@@ -1,7 +1,7 @@
 class Phones2Puzzle2 {
   constructor(piece) {
     this.elements = [];
-    this.textCentreX = window.innerWidth / 2;
+    this.textCentreX = piece === "1" ? window.innerWidth : 0;
     this.textCentreY = piece === "1" ? 0 : window.innerHeight;
 
     this.draw();
