@@ -54,7 +54,9 @@ class SVG {
   }
 
   remove() {
-    this.element.remove();
+    if (this.element) {
+      this.element.remove();
+    }
     this.element = null;
   }
 
