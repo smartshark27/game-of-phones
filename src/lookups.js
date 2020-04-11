@@ -20,6 +20,10 @@ const PUZZLE_LOOKUP = {
     "2": {
       "1": () => new Phones2Puzzle2("1"),
       "2": () => new Phones2Puzzle2("2")
+    },
+    "3": {
+      "1": () => new Phones2Puzzle3("1"),
+      "2": () => new Phones2Puzzle3("2")
     }
   },
   "3": {

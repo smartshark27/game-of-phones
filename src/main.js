@@ -8,14 +8,18 @@ const FONT_STYLE_HEADING =
   "font-family: 'Spartan', sans-serif; font-weight: 700";
 const FONT_SIZE_BODY = 42;
 const FONT_STYLE_BODY = "font-family: 'Spartan', sans-serif; font-weight: 400";
+const RANDOM_SEED = "kentucky fried chicken";
 
 var currentScreen;
+var seed;
 var phonesNum;
 var puzzleNum;
 var pieceNum;
 
 function handleLoad() {
   currentScreen = new IntroScreen();
+  seed = generateSeed(RANDOM_SEED);
+  console.log("Width:", window.innerWidth, "Height:", window.innerHeight);
 }
 
 async function switchScreenTo(screenName) {
@@ -24,7 +28,7 @@ async function switchScreenTo(screenName) {
   try {
     currentScreen = SCREEN_LOOKUP[screenName]();
   } catch(error) {
-    print(error);
+    console.log(error);
     throw "Could not switch to screen: " + screenName;
   }
 }

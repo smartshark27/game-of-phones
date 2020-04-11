@@ -55,6 +55,11 @@ class SVG {
 
   remove() {
     this.element.remove();
+    this.element = null;
+  }
+
+  isNull() {
+    return this.element === null;
   }
 
   _getRectBoundary(rect) {
