@@ -16,10 +16,23 @@ var phonesNum;
 var puzzleNum;
 var pieceNum;
 
+function getCircleXY(x, y, WIDTH = 3000, HEIGHT = 2000) {
+  console.log(x, y);
+  var pieceX, pieceY;
+  pieceX = y - (HEIGHT - window.innerWidth) / 2;
+  pieceY = window.innerHeight - x;
+  console.log(pieceX, pieceY)
+  pieceX = x - (WIDTH - window.innerWidth);
+  pieceY = y - (HEIGHT - window.innerHeight) / 2;
+  console.log(pieceX, pieceY)
+  return [pieceX, pieceY];
+}
+
 function handleLoad() {
   currentScreen = new IntroScreen();
   seed = generateSeed(RANDOM_SEED);
   console.log("Width:", window.innerWidth, "Height:", window.innerHeight);
+  getCircleXY(200, 200);
 }
 
 async function switchScreenTo(screenName) {

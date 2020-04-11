@@ -74,7 +74,7 @@ class Phones2Puzzle3 {
     var pieceX, pieceY;
     if (this.piece === "1") {
       pieceX = y - (this.HEIGHT - window.innerWidth) / 2;
-      pieceY = x - (this.WIDTH - window.innerHeight);
+      pieceY = window.innerHeight - x;
     } else if (this.piece === "2") {
       pieceX = x - (this.WIDTH - window.innerWidth);
       pieceY = y - (this.HEIGHT - window.innerHeight) / 2;
