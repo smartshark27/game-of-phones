@@ -1,4 +1,4 @@
-class Phones2Puzzle3 {
+class Phones3Puzzle3 {
   constructor(piece) {
     this.WIDTH = 3000;
     this.HEIGHT = 2000;
@@ -73,11 +73,14 @@ class Phones2Puzzle3 {
     );
     var pieceX, pieceY;
     if (this.piece === "1") {
-      pieceX = y - (this.HEIGHT - window.innerWidth) / 2;
-      pieceY = window.innerHeight - x;
+      pieceX = y; // Done
+      pieceY = this.WIDTH - x; // Done
     } else if (this.piece === "2") {
-      pieceX = x - (this.WIDTH - window.innerWidth);
-      pieceY = y - (this.HEIGHT - window.innerHeight) / 2;
+      pieceX = window.innerHeight - (this.HEIGHT - y);
+      pieceY = window.innerWidth - (this.WIDTH - x);
+    } else if (this.piece === "3") {
+      pieceX = x; // Done
+      pieceY = y - (this.HEIGHT - window.innerHeight) / 2; // Done
     } else {
       throw "Invalid piece number: " + pieceNum
     }
