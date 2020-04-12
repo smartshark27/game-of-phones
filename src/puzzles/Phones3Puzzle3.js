@@ -73,14 +73,14 @@ class Phones3Puzzle3 {
     );
     var pieceX, pieceY;
     if (this.piece === "1") {
-      pieceX = y; // Done
-      pieceY = this.WIDTH - x; // Done
+      pieceX = y;
+      pieceY = this.WIDTH - x;
     } else if (this.piece === "2") {
-      pieceX = window.innerHeight - (this.HEIGHT - y);
-      pieceY = window.innerWidth - (this.WIDTH - x);
+      pieceX = this.HEIGHT - y;
+      pieceY = window.innerHeight - (this.WIDTH - x);
     } else if (this.piece === "3") {
-      pieceX = x; // Done
-      pieceY = y - (this.HEIGHT - window.innerHeight) / 2; // Done
+      pieceX = x;
+      pieceY = y - (this.HEIGHT - window.innerHeight) / 2;
     } else {
       throw "Invalid piece number: " + pieceNum
     }
