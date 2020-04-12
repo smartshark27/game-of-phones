@@ -37,7 +37,7 @@ class Phones2Puzzle2 {
         .setAttribute("y", 0)
         .setAttribute("width", window.innerWidth)
         .setAttribute("height", window.innerHeight)
-        .setAttribute("fill", "LightGreen")
+        .setAttribute("fill", COLORS.LIGHT_GREEN)
     );
   }
 

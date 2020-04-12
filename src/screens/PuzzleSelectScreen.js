@@ -69,7 +69,7 @@ class PuzzleSelectScreen {
         .setAttribute("y", textBoundary.y - 20)
         .setAttribute("width", textBoundary.width + 80)
         .setAttribute("height", textBoundary.height + 40)
-        .setAttribute("fill", "LightGreen")
+        .setAttribute("fill", COLORS.LIGHT_GREEN)
         .setAttribute("onclick", "PuzzleSelectScreen.handleClick(event)")
         .setAttribute("puzzleNum", puzzleNum)
     );

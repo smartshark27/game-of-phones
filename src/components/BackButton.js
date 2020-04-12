@@ -17,7 +17,7 @@ class BackButton {
         .setAttribute("y", rectY)
         .setAttribute("width", rectWidth)
         .setAttribute("height", rectHeight)
-        .setAttribute("fill", "#ff9696")
+        .setAttribute("fill", COLORS.LIGHT_RED)
         .setAttribute("onclick", this.handleClick)
     );
 

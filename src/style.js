@@ -1,12 +1,12 @@
 const COLORS = {
   BLACK: "Black",
-  LIGHT_RED: "#ff9696",
-  LIGHT_ORANGE: "LightOrange",
-  LIGHT_YELLOW: "LightYellow",
-  LIGHT_GREEN: "LightGreen",
-  LIGHT_BLUE: "LightBlue",
-  LIGHT_INDIGO: "LightIndigo",
-  LIGHT_VIOLET: "LightViolet"
+  LIGHT_RED: "#ff7575",
+  LIGHT_ORANGE: "#ffb575",
+  LIGHT_YELLOW: "#fffa75",
+  LIGHT_GREEN: "#64ff59",
+  LIGHT_BLUE: "#75ccff",
+  LIGHT_INDIGO: "#7a59ff",
+  LIGHT_VIOLET: "#bf59ff"
 };
 
 const FONTS = {

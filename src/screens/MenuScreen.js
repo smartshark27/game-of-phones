@@ -39,7 +39,7 @@ class MenuScreen {
     this._drawTextButton(
       "50%",
       "Play",
-      "LightGreen",
+      COLORS.LIGHT_GREEN,
       "MenuScreen.handlePlayClick()"
     );
   }
@@ -48,7 +48,7 @@ class MenuScreen {
     this._drawTextButton(
       "65%",
       "Instructions",
-      "LightBlue",
+      COLORS.LIGHT_BLUE,
       "MenuScreen.handleInstructionsClick()"
     );
   }

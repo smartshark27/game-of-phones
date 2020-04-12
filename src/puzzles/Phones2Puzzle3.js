@@ -2,7 +2,15 @@ class Phones2Puzzle3 {
   constructor(piece) {
     this.WIDTH = 3000;
     this.HEIGHT = 2000;
-    this.COLORS = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+    this.COLORS = [
+      COLORS.LIGHT_RED,
+      COLORS.LIGHT_ORANGE,
+      COLORS.LIGHT_YELLOW,
+      COLORS.LIGHT_GREEN,
+      COLORS.LIGHT_BLUE,
+      COLORS.LIGHT_INDIGO,
+      COLORS.LIGHT_VIOLET
+    ];
     this.GROW_SPEED = 2;
 
     this.elements = [];
@@ -79,7 +87,7 @@ class Phones2Puzzle3 {
       pieceX = x - (this.WIDTH - window.innerWidth);
       pieceY = y - (this.HEIGHT - window.innerHeight) / 2;
     } else {
-      throw "Invalid piece number: " + pieceNum
+      throw "Invalid piece number: " + pieceNum;
     }
     return [pieceX, pieceY];
   }
@@ -94,7 +102,7 @@ class Phones2Puzzle3 {
       if (!circle.isNull()) {
         this._growCircle(circle);
       }
-    })
+    });
   }
 
   _growCircle(circle) {

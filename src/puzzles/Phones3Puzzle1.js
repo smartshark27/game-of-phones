@@ -55,7 +55,7 @@ class Phones3Puzzle1 {
         .setAttribute("y", -this.yOffset)
         .setAttribute("width", this.WIDTH)
         .setAttribute("height", this.HEIGHT)
-        .setAttribute("fill", "LightBlue")
+        .setAttribute("fill", COLORS.LIGHT_BLUE)
     );
   }
 
@@ -66,7 +66,7 @@ class Phones3Puzzle1 {
         .setAttribute("cx", -this.xOffset + this.BALL_RADIUS)
         .setAttribute("cy", window.innerHeight / 2)
         .setAttribute("r", this.BALL_RADIUS)
-        .setAttribute("fill", "Black")
+        .setAttribute("fill", COLORS.BLACK)
     );
   }
 
