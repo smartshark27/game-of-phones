@@ -21,8 +21,8 @@ class InstructionsScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "15%")
-        .setAttribute("style", FONT_STYLE_HEADING)
-        .setAttribute("font-size", FONT_SIZE_HEADING)
+        .setAttribute("style", TEXT_STYLE.HEADING.FONT)
+        .setAttribute("font-size", TEXT_STYLE.HEADING.SIZE)
         .setTextContent("Instructions")
     );
   }
@@ -44,14 +44,14 @@ class InstructionsScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", y)
-        .setAttribute("style", FONT_STYLE_BODY)
-        .setAttribute("font-size", FONT_SIZE_BODY)
+        .setAttribute("style", TEXT_STYLE.BODY.FONT)
+        .setAttribute("font-size", TEXT_STYLE.BODY.SIZE)
         .setTextContent(text)
     );
   }
 
   _drawScreenButton() {
-    const handleClick = "switchScreenTo(\"menu\")"
+    const handleClick = "switchScreenTo(\"MENU\")"
     this.elements.push(new ScreenButton(handleClick));
   }
 }

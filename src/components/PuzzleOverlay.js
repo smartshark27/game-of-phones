@@ -21,8 +21,8 @@ class PuzzleOverlay {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "20%")
-        .setAttribute("style", FONT_STYLE_BODY)
-        .setAttribute("font-size", FONT_SIZE_BODY)
+        .setAttribute("style", TEXT_STYLE.BODY.FONT)
+        .setAttribute("font-size", TEXT_STYLE.BODY.SIZE)
         .setTextContent("Phones: " + phonesNum + ", Puzzle: " + puzzleNum)
     );
     this.elements.push(
@@ -31,8 +31,8 @@ class PuzzleOverlay {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "30%")
-        .setAttribute("style", FONT_STYLE_HEADING)
-        .setAttribute("font-size", FONT_SIZE_HEADING)
+        .setAttribute("style", TEXT_STYLE.HEADING.FONT)
+        .setAttribute("font-size", TEXT_STYLE.HEADING.SIZE)
         .setTextContent("This is Piece " + pieceNum)
     );
     this.elements.push(
@@ -41,8 +41,8 @@ class PuzzleOverlay {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "75%")
-        .setAttribute("style", FONT_STYLE_BODY)
-        .setAttribute("font-size", FONT_SIZE_BODY)
+        .setAttribute("style", TEXT_STYLE.BODY.FONT)
+        .setAttribute("font-size", TEXT_STYLE.BODY.SIZE)
         .setTextContent("Touch to start animation at the")
     );
     this.elements.push(
@@ -51,8 +51,8 @@ class PuzzleOverlay {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "80%")
-        .setAttribute("style", FONT_STYLE_BODY)
-        .setAttribute("font-size", FONT_SIZE_BODY)
+        .setAttribute("style", TEXT_STYLE.BODY.FONT)
+        .setAttribute("font-size", TEXT_STYLE.BODY.SIZE)
         .setTextContent("same time as everyone else")
     );
   }
@@ -63,7 +63,7 @@ class PuzzleOverlay {
   }
 
   _drawBackButton() {
-    const handleClick = "switchScreenTo(\"pieceSelect\")";
+    const handleClick = "switchScreenTo(\"PIECE_SELECT\")";
     this.elements.push(new BackButton(handleClick));
   }
 }

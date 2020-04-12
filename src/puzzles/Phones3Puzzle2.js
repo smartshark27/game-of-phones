@@ -66,7 +66,7 @@ class Phones3Puzzle2 {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", this.textCentreX)
         .setAttribute("y", this.textCentreY)
-        .setAttribute("style", FONT_STYLE_TITLE)
+        .setAttribute("style", TEXT_STYLE.TITLE.FONT)
         .setAttribute("font-size", 450)
     );
   }

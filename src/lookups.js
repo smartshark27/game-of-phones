@@ -1,11 +1,11 @@
 const SCREEN_LOOKUP = {
-  intro: () => new IntroScreen(),
-  instructions: () => new InstructionsScreen(),
-  menu: () => new MenuScreen(),
-  phonesSelect: () => new PhonesSelectScreen(),
-  puzzleSelect: () => new PuzzleSelectScreen(),
-  pieceSelect: () => new PieceSelectScreen(),
-  puzzle: () => new PuzzleScreen()
+  INTRO: () => new IntroScreen(),
+  INSTRUCTIONS: () => new InstructionsScreen(),
+  MENU: () => new MenuScreen(),
+  PHONES_SELECT: () => new PhonesSelectScreen(),
+  PUZZLE_SELECT: () => new PuzzleSelectScreen(),
+  PIECE_SELECT: () => new PieceSelectScreen(),
+  PUZZLE: () => new PuzzleScreen()
 };
 
 // Number of phones:

@@ -19,11 +19,11 @@ class PhonesSelectScreen {
   static handleButtonClick(event) {
     const clickedElement = event.target;
     phonesNum = clickedElement.getAttribute("phonesNum");
-    switchScreenTo("puzzleSelect");
+    switchScreenTo("PUZZLE_SELECT");
   }
 
   _drawBackButton() {
-    const handleClick = "switchScreenTo(\"menu\")";
+    const handleClick = "switchScreenTo(\"MENU\")";
     this.elements.push(new BackButton(handleClick));
   }
 
@@ -34,8 +34,8 @@ class PhonesSelectScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", y)
-        .setAttribute("style", FONT_STYLE_HEADING)
-        .setAttribute("font-size", FONT_SIZE_HEADING)
+        .setAttribute("style", TEXT_STYLE.HEADING.FONT)
+        .setAttribute("font-size", TEXT_STYLE.HEADING.SIZE)
         .setTextContent("How many phones?")
     );
   }
@@ -55,8 +55,8 @@ class PhonesSelectScreen {
       .setAttribute("text-anchor", "middle")
       .setAttribute("x", window.innerWidth / 2)
       .setAttribute("y", y)
-      .setAttribute("style", FONT_STYLE_BODY)
-      .setAttribute("font-size", FONT_SIZE_BODY)
+      .setAttribute("style", TEXT_STYLE.BODY.FONT)
+      .setAttribute("font-size", TEXT_STYLE.BODY.SIZE)
       .setTextContent(phonesNum + " Phones");
     const textBoundary = tempText.getBBox();
     tempText.remove();
@@ -77,8 +77,8 @@ class PhonesSelectScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", window.innerWidth / 2)
         .setAttribute("y", y)
-        .setAttribute("style", FONT_STYLE_BODY)
-        .setAttribute("font-size", FONT_SIZE_BODY)
+        .setAttribute("style", TEXT_STYLE.BODY.FONT)
+        .setAttribute("font-size", TEXT_STYLE.BODY.SIZE)
         .setTextContent(phonesNum + " Phones")
         .setAttribute("onclick", "PhonesSelectScreen.handleButtonClick(event)")
         .setAttribute("phonesNum", phonesNum)

@@ -15,11 +15,11 @@ class MenuScreen {
   }
 
   static handlePlayClick() {
-    switchScreenTo("phonesSelect");
+    switchScreenTo("PHONES_SELECT");
   }
 
   static handleInstructionsClick() {
-    switchScreenTo("instructions");
+    switchScreenTo("INSTRUCTIONS");
   }
 
   _drawTitle() {
@@ -29,8 +29,8 @@ class MenuScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "35%")
-        .setAttribute("style", FONT_STYLE_TITLE)
-        .setAttribute("font-size", FONT_SIZE_TITLE)
+        .setAttribute("style", TEXT_STYLE.TITLE.FONT)
+        .setAttribute("font-size", TEXT_STYLE.TITLE.SIZE)
         .setTextContent("Phuzzle")
     );
   }
@@ -59,8 +59,8 @@ class MenuScreen {
       .setAttribute("text-anchor", "middle")
       .setAttribute("x", "50%")
       .setAttribute("y", y)
-      .setAttribute("style", FONT_STYLE_BODY)
-      .setAttribute("font-size", FONT_SIZE_BODY)
+      .setAttribute("style", TEXT_STYLE.BODY.FONT)
+      .setAttribute("font-size", TEXT_STYLE.BODY.SIZE)
       .setTextContent(text);
     const textBoundary = tempText.getBBox();
     tempText.remove();
@@ -80,8 +80,8 @@ class MenuScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", y)
-        .setAttribute("style", FONT_STYLE_BODY)
-        .setAttribute("font-size", FONT_SIZE_BODY)
+        .setAttribute("style", TEXT_STYLE.BODY.FONT)
+        .setAttribute("font-size", TEXT_STYLE.BODY.SIZE)
         .setTextContent(text)
         .setAttribute("onclick", clickHandler)
     );

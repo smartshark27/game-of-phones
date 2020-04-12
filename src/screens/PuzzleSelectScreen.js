@@ -18,11 +18,11 @@ class PuzzleSelectScreen {
   static handleClick(event) {
     const clickedElement = event.target;
     puzzleNum = JSON.parse(clickedElement.getAttribute("puzzleNum"));
-    switchScreenTo("pieceSelect");
+    switchScreenTo("PIECE_SELECT");
   }
 
   _drawBackButton() {
-    const handleClick = "switchScreenTo(\"phonesSelect\")";
+    const handleClick = "switchScreenTo(\"PHONES_SELECT\")";
     this.elements.push(new BackButton(handleClick));
   }
 
@@ -33,8 +33,8 @@ class PuzzleSelectScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", "50%")
         .setAttribute("y", "40%")
-        .setAttribute("style", FONT_STYLE_HEADING)
-        .setAttribute("font-size", FONT_SIZE_HEADING)
+        .setAttribute("style", TEXT_STYLE.HEADING.FONT)
+        .setAttribute("font-size", TEXT_STYLE.HEADING.SIZE)
         .setTextContent("Select Puzzle")
     );
   }
@@ -57,8 +57,8 @@ class PuzzleSelectScreen {
       .setAttribute("text-anchor", "middle")
       .setAttribute("x", x)
       .setAttribute("y", "60%")
-      .setAttribute("style", FONT_STYLE_BODY)
-      .setAttribute("font-size", FONT_SIZE_BODY)
+      .setAttribute("style", TEXT_STYLE.BODY.FONT)
+      .setAttribute("font-size", TEXT_STYLE.BODY.SIZE)
       .setTextContent(puzzleNum);
     const textBoundary = tempText.getBBox();
     tempText.remove();
@@ -79,8 +79,8 @@ class PuzzleSelectScreen {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", x)
         .setAttribute("y", "60%")
-        .setAttribute("style", FONT_STYLE_BODY)
-        .setAttribute("font-size", FONT_SIZE_BODY)
+        .setAttribute("style", TEXT_STYLE.BODY.FONT)
+        .setAttribute("font-size", TEXT_STYLE.BODY.SIZE)
         .setTextContent(puzzleNum)
         .setAttribute("onclick", "PuzzleSelectScreen.handleClick(event)")
         .setAttribute("puzzleNum", puzzleNum)

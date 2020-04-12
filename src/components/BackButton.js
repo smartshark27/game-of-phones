@@ -27,8 +27,8 @@ class BackButton {
         .setAttribute("text-anchor", "middle")
         .setAttribute("x", rectX + rectWidth / 2)
         .setAttribute("y", rectY + rectHeight / 2)
-        .setAttribute("style", FONT_STYLE_BODY)
-        .setAttribute("font-size", FONT_SIZE_BODY)
+        .setAttribute("style", TEXT_STYLE.BODY.FONT)
+        .setAttribute("font-size", TEXT_STYLE.BODY.SIZE)
         .setTextContent("Back")
         .setAttribute("onclick", this.handleClick)
     );
