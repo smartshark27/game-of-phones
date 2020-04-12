@@ -63,13 +63,16 @@ class PuzzleSelectScreen {
     const textBoundary = tempText.getBBox();
     tempText.remove();
 
+    const difficulty = PUZZLE_LOOKUP[phonesNum][puzzleNum].DIFFICULTY;
+    const color = DIFFICULTY_COLORS[difficulty];
+
     this.elements.push(
       SVG.new("rect")
         .setAttribute("x", textBoundary.x - 40)
         .setAttribute("y", textBoundary.y - 20)
         .setAttribute("width", textBoundary.width + 80)
         .setAttribute("height", textBoundary.height + 40)
-        .setAttribute("fill", COLORS.LIGHT_GREEN)
+        .setAttribute("fill", color)
         .setAttribute("onclick", "PuzzleSelectScreen.handleClick(event)")
         .setAttribute("puzzleNum", puzzleNum)
     );

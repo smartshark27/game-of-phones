@@ -4,13 +4,13 @@ class PuzzleScreen {
   constructor() {
     this.elements = [];
 
-    this._drawPuzzle = PUZZLE_LOOKUP[phonesNum][puzzleNum][pieceNum];
+    this._drawPuzzle = PUZZLE_LOOKUP[phonesNum][puzzleNum].DRAW;
 
     this.draw();
   }
 
   draw() {
-    this.puzzle = this._drawPuzzle();
+    this.puzzle = this._drawPuzzle(pieceNum);
     this._drawOverlay();
   }
 

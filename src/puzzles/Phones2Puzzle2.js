@@ -2,7 +2,8 @@ class Phones2Puzzle2 {
   constructor(piece) {
     this.elements = [];
     this.textCentreX = piece === "1" ? window.innerWidth : 0;
-    this.textCentreY = piece === "1" ? 0 : window.innerHeight;
+    this.textCentreY =
+      piece === "1" ? window.innerHeight / 4 : (window.innerHeight * 3) / 4;
 
     this.draw();
   }
@@ -15,7 +16,7 @@ class Phones2Puzzle2 {
   startAnimation() {
     this._showText();
     var degrees = 0;
-    
+
     this.interval = setInterval(() => {
       this._rotateText(degrees);
       degrees = (degrees + 1) % 360;

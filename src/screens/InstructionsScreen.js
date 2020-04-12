@@ -33,7 +33,7 @@ class InstructionsScreen {
     this._drawInstruction("45%", "3) All start the same level.");
     this._drawInstruction("55%", "4) All choose a different piece.");
     this._drawInstruction("65%", "5) Tap all screens at the same time.");
-    this._drawInstruction("75%", "6) Place phones on a surface correctly.");
+    this._drawInstruction("75%", "6) Place phones together correctly.");
     this._drawInstruction("85%", "7) Move on to the next puzzle.");
   }
 

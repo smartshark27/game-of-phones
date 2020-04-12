@@ -21,7 +21,7 @@ class PieceSelectScreen {
   }
 
   _drawBackButton() {
-    const handleClick = "switchScreenTo(\"PUZZLE_SELECT\")";
+    const handleClick = 'switchScreenTo("PUZZLE_SELECT")';
     this.elements.push(new BackButton(handleClick));
   }
 
@@ -39,14 +39,11 @@ class PieceSelectScreen {
   }
 
   _drawButtons() {
-    const pieceNums = PUZZLE_LOOKUP[phonesNum][puzzleNum];
-    const numberOfButtons = Object.keys(pieceNums).length;
+    const numberOfButtons = Number(phonesNum);
     const xPositions = generatePositionsBetween(numberOfButtons, 30, 70);
-    var xIndex = 0;
-    for (var pieceNum in pieceNums) {
-      const x = xPositions[xIndex];
-      this._drawButton(x, pieceNum);
-      xIndex++;
+    for (var i = 0; i < numberOfButtons; i++) {
+      const x = xPositions[i];
+      this._drawButton(x, (i + 1).toString());
     }
   }
 
@@ -62,13 +59,16 @@ class PieceSelectScreen {
     const textBoundary = tempText.getBBox();
     tempText.remove();
 
+    const difficulty = PUZZLE_LOOKUP[phonesNum][puzzleNum].DIFFICULTY;
+    const color = DIFFICULTY_COLORS[difficulty];
+
     this.elements.push(
       SVG.new("rect")
         .setAttribute("x", textBoundary.x - 40)
         .setAttribute("y", textBoundary.y - 20)
         .setAttribute("width", textBoundary.width + 80)
         .setAttribute("height", textBoundary.height + 40)
-        .setAttribute("fill", COLORS.LIGHT_GREEN)
+        .setAttribute("fill", color)
         .setAttribute("onclick", "PieceSelectScreen.handleClick(event)")
         .setAttribute("pieceNum", pieceNum)
     );

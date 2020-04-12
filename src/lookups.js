@@ -8,39 +8,33 @@ const SCREEN_LOOKUP = {
   PUZZLE: () => new PuzzleScreen()
 };
 
-// Number of phones:
-//  Puzzle number:
-//   Piece number:
 const PUZZLE_LOOKUP = {
   "2": {
     "1": {
-      "1": () => new Phones2Puzzle1("1"),
-      "2": () => new Phones2Puzzle1("2")
+      DRAW: (piece) => new Phones2Puzzle1(piece),
+      DIFFICULTY: "EASY"
     },
     "2": {
-      "1": () => new Phones2Puzzle2("1"),
-      "2": () => new Phones2Puzzle2("2")
+      DRAW: (piece) => new Phones2Puzzle2(piece),
+      DIFFICULTY: "EASY"
     },
     "3": {
-      "1": () => new Phones2Puzzle3("1"),
-      "2": () => new Phones2Puzzle3("2")
+      DRAW: (piece) => new Phones2Puzzle3(piece),
+      DIFFICULTY: "INTERMEDIATE"
     }
   },
   "3": {
     "1": {
-      "1": () => new Phones3Puzzle1("1"),
-      "2": () => new Phones3Puzzle1("2"),
-      "3": () => new Phones3Puzzle1("3")
+      DRAW: (piece) => new Phones3Puzzle1(piece),
+      DIFFICULTY: "EASY"
     },
     "2": {
-      "1": () => new Phones3Puzzle2("1"),
-      "2": () => new Phones3Puzzle2("2"),
-      "3": () => new Phones3Puzzle2("3")
+      DRAW: (piece) => new Phones3Puzzle2(piece),
+      DIFFICULTY: "EASY"
     },
     "3": {
-      "1": () => new Phones3Puzzle3("1"),
-      "2": () => new Phones3Puzzle3("2"),
-      "3": () => new Phones3Puzzle3("3")
+      DRAW: (piece) => new Phones3Puzzle3(piece),
+      DIFFICULTY: "INTERMEDIATE"
     }
   }
 };
